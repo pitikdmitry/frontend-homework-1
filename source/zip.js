@@ -1,16 +1,16 @@
 "use strict";
 
-function zip(arr) {
-    const result = {};
-    let arrayArguments = Array.from(arguments);
+function zip(...arr) {
+    let arrayArguments = Array.from(arr);
 
-    arrayArguments.forEach(function (obj) {
-       for(let key in obj) {
-           if(result[key] == undefined) {
-               result[key] = obj[key];
-           }
-       }
+    return arrayArguments.reduce(function (result, obj) {
+
+        for(let key in obj) {
+            if(result[key] === undefined) {
+                result[key] = obj[key];
+            }
+        }
+
+        return result;
     });
-    
-    return result;
 }
